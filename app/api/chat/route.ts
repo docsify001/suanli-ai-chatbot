@@ -1,16 +1,26 @@
-import { openai } from "@ai-sdk/openai";
-import {
-  streamText,
-  UIMessage,
-  convertToModelMessages,
-} from "ai";
+import { createOllama } from "ollama-ai-provider";
+import { frontendTools } from "@assistant-ui/react-ai-sdk";
+import { streamText } from "ai";
+
+export const maxDuration = 30;
+
+const ollama = createOllama({
+  baseURL: process.env.OLLAMA_BASE_URL || "https://d08061808-ollama-webui-qwen3te-285-dpj5pbsb-11434.550c.cloud/api",
+});
 
 export async function POST(req: Request) {
-  const { messages }: { messages: UIMessage[] } = await req.json();
+  const { messages, system, tools } = await req.json();
+
   const result = streamText({
-    model: openai("gpt-4o"),
-    messages: convertToModelMessages(messages),
+    model: ollama("qwen3:32b"),
+    messages,
+    toolCallStreaming: true,
+    system,
+    tools: {
+      ...frontendTools(tools),
+      // add backend tools here
+    },
   });
 
-  return result.toUIMessageStreamResponse();
+  return result.toDataStreamResponse();
 }

@@ -20,7 +20,9 @@ import {
 } from "@/components/ui/breadcrumb";
 
 export const Assistant = () => {
-  const runtime = useChatRuntime();
+  const runtime = useChatRuntime({
+    api: "/api/chat",
+  });
 
   return (
     <AssistantRuntimeProvider runtime={runtime}>
