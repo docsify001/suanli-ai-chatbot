@@ -47,3 +47,11 @@ pnpm dev
 
 ### 打包发布
 
+#### 安装pm2
+
+```bash
+npm install pm2 -g
+
+```
+
+#### 打包应用

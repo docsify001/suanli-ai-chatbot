@@ -1,0 +1,10 @@
+{
+    "apps": [
+      {
+        "name": "suanli-ai-chatbot",
+        "script": "./server.js",
+        "exec_mode": "cluster",
+        "instances": 1
+      }
+    ]
+  }
