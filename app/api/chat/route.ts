@@ -5,14 +5,15 @@ import { streamText } from "ai";
 export const maxDuration = 30;
 
 const ollama = createOllama({
-  baseURL: process.env.OLLAMA_BASE_URL || "https://d08061808-ollama-webui-qwen3te-285-dpj5pbsb-11434.550c.cloud/api",
+  baseURL: process.env.OLLAMA_BASE_URL || "http://localhost:11434/api",
 });
 
+const defaultModel = process.env.DEFAULT_MODEL || "qwen3:32b";
 export async function POST(req: Request) {
   const { messages, system, tools } = await req.json();
 
   const result = streamText({
-    model: ollama("qwen3:32b"),
+    model: ollama(defaultModel),
     messages,
     toolCallStreaming: true,
     system,

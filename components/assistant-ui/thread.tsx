@@ -117,24 +117,24 @@ const ThreadWelcomeSuggestions: FC = () => {
     <div className="grid w-full gap-2 sm:grid-cols-2">
       {[
         {
-          title: "What are the advantages",
-          label: "of using Assistant Cloud?",
-          action: "What are the advantages of using Assistant Cloud?",
+          title: "什么是共绩云主机",
+          label: "什么是共绩云主机",
+          action: "什么是共绩云主机",
         },
         {
-          title: "Write code to",
-          label: `demonstrate topological sorting`,
-          action: `Write code to demonstrate topological sorting`,
+          title: "写一段代码",
+          label: `展示拓扑排序`,
+          action: `写一段代码展示拓扑排序`,
         },
         {
-          title: "Help me write an essay",
-          label: `about AI chat applications`,
-          action: `Help me write an essay about AI chat applications`,
+          title: "帮我写一篇关于AI聊天应用的文章",
+          label: `关于AI聊天应用`,
+          action: `帮我写一篇关于AI聊天应用的文章`,
         },
         {
-          title: "What is the weather",
-          label: "in San Francisco?",
-          action: "What is the weather in San Francisco?",
+          title: "今天天气怎么样",
+          label: "今天北京天气怎么样",
+          action: "今天北京天气怎么样",
         },
       ].map((suggestedAction, index) => (
         <motion.div
@@ -201,7 +201,7 @@ const ComposerAction: FC = () => {
     // aui-composer-action-wrapper
     <div className="bg-muted border-border dark:border-muted-foreground/15 relative flex items-center justify-between rounded-b-2xl border-x border-b p-2">
       <TooltipIconButton
-        tooltip="Attach file"
+        tooltip="上传文件"
         variant="ghost"
         // aui-composer-attachment-button
         className="hover:bg-foreground/15 dark:hover:bg-background/50 scale-115 p-3.5"
@@ -219,7 +219,7 @@ const ComposerAction: FC = () => {
             variant="default"
             // aui-composer-send
             className="dark:border-muted-foreground/90 border-muted-foreground/60 hover:bg-primary/75 size-8 rounded-full border"
-            aria-label="Send message"
+            aria-label="发送消息"
           >
             {/* aui-composer-send-icon */}
             <ArrowUpIcon className="size-5" />
@@ -234,7 +234,7 @@ const ComposerAction: FC = () => {
             variant="default"
             // aui-composer-cancel
             className="dark:border-muted-foreground/90 border-muted-foreground/60 hover:bg-primary/75 size-8 rounded-full border"
-            aria-label="Stop generating"
+            aria-label="停止生成"
           >
             {/* aui-composer-cancel-icon */}
             <Square className="size-3.5 fill-white dark:size-4 dark:fill-black" />
@@ -302,7 +302,7 @@ const AssistantActionBar: FC = () => {
       className="text-muted-foreground data-floating:bg-background col-start-3 row-start-2 mt-3 ml-3 flex gap-1 data-floating:absolute data-floating:mt-2 data-floating:rounded-md data-floating:border data-floating:p-1 data-floating:shadow-sm"
     >
       <ActionBarPrimitive.Copy asChild>
-        <TooltipIconButton tooltip="Copy">
+        <TooltipIconButton tooltip="复制">
           <MessagePrimitive.If copied>
             <CheckIcon />
           </MessagePrimitive.If>
@@ -312,7 +312,7 @@ const AssistantActionBar: FC = () => {
         </TooltipIconButton>
       </ActionBarPrimitive.Copy>
       <ActionBarPrimitive.Reload asChild>
-        <TooltipIconButton tooltip="Refresh">
+        <TooltipIconButton tooltip="刷新">
           <RefreshCwIcon />
         </TooltipIconButton>
       </ActionBarPrimitive.Reload>
@@ -353,7 +353,7 @@ const UserActionBar: FC = () => {
       className="col-start-1 mt-2.5 mr-3 flex flex-col items-end"
     >
       <ActionBarPrimitive.Edit asChild>
-        <TooltipIconButton tooltip="Edit">
+        <TooltipIconButton tooltip="编辑">
           <PencilIcon />
         </TooltipIconButton>
       </ActionBarPrimitive.Edit>
@@ -377,12 +377,12 @@ const EditComposer: FC = () => {
         <div className="mx-3 mb-3 flex items-center justify-center gap-2 self-end">
           <ComposerPrimitive.Cancel asChild>
             <Button variant="ghost" size="sm" aria-label="Cancel edit">
-              Cancel
+              取消
             </Button>
           </ComposerPrimitive.Cancel>
           <ComposerPrimitive.Send asChild>
             <Button size="sm" aria-label="Update message">
-              Update
+              更新
             </Button>
           </ComposerPrimitive.Send>
         </div>
@@ -406,7 +406,7 @@ const BranchPicker: FC<BranchPickerPrimitive.Root.Props> = ({
       {...rest}
     >
       <BranchPickerPrimitive.Previous asChild>
-        <TooltipIconButton tooltip="Previous">
+        <TooltipIconButton tooltip="上一页">
           <ChevronLeftIcon />
         </TooltipIconButton>
       </BranchPickerPrimitive.Previous>
@@ -415,7 +415,7 @@ const BranchPicker: FC<BranchPickerPrimitive.Root.Props> = ({
         <BranchPickerPrimitive.Number /> / <BranchPickerPrimitive.Count />
       </span>
       <BranchPickerPrimitive.Next asChild>
-        <TooltipIconButton tooltip="Next">
+        <TooltipIconButton tooltip="下一页">
           <ChevronRightIcon />
         </TooltipIconButton>
       </BranchPickerPrimitive.Next>
