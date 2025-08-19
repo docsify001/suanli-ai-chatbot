@@ -1,27 +1,24 @@
-import { createOllama } from "ollama-ai-provider";
-import { frontendTools } from "@assistant-ui/react-ai-sdk";
-import { streamText } from "ai";
+import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
 
-export const maxDuration = 30;
+import {
+  streamText,
+  UIMessage,
+  convertToModelMessages,
+} from "ai";
 
-const ollama = createOllama({
-  baseURL: process.env.OLLAMA_BASE_URL || "http://localhost:11434/api",
+const provider = createOpenAICompatible({
+  name: 'vllm',
+  apiKey: process.env.OPENAI_API_KEY,
+  baseURL: process.env.OPENAI_BASE_URL || '',
+  includeUsage: true, // Include usage information in streaming responses
 });
 
-const defaultModel = process.env.DEFAULT_MODEL || "qwen3:32b";
 export async function POST(req: Request) {
-  const { messages, system, tools } = await req.json();
-
+  const { messages }: { messages: UIMessage[] } = await req.json();
   const result = streamText({
-    model: ollama(defaultModel),
-    messages,
-    toolCallStreaming: true,
-    system,
-    tools: {
-      ...frontendTools(tools),
-      // add backend tools here
-    },
+    model: provider(process.env.OPENAI_MODEL || "Qwen/Qwen3-4B"),
+    messages: convertToModelMessages(messages),
   });
 
-  return result.toDataStreamResponse();
+  return result.toUIMessageStreamResponse();
 }
